@@ -43,19 +43,19 @@ def wakeup():
 		if mic.is_silent(s_data):
 			commonsense.sleepy()
 			sleep()
-		try:
-			stt_engine = google_stt.Google_STT(mic)
-			stt_response = stt_engine.get_text()
-			if(jarvis_brain.process(stt_response)):
-				pass
-			else:
-				if check_sleep(stt_response.split(' ')):
-					break
-				response = k.respond(stt_response)
-				print(response)
-				tts_engine.say(response)
-		except:
-			commonsense.sorry()
+		#try:
+		stt_engine = google_stt.Google_STT(mic)
+		stt_response = stt_engine.get_text()
+		if(jarvis_brain.process(stt_response)):
+			pass
+		else:
+			if check_sleep(stt_response.split(' ')):
+				break
+			response = k.respond(stt_response)
+			print(response)
+			tts_engine.say(response)
+		#except:
+		commonsense.sorry()
 
 k.loadBrain('data/jarvis.brn')
 try: 
